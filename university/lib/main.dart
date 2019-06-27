@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import './pages/index_page.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import './provide/schools_detail.dart';
+import 'package:provide/provide.dart';
 
-void main() => runApp(MyApp());
+void main(){
+
+  var schoolsDetailsProvide = SchoolsDetailsInfoProvide();
+  var providers = Providers();
+  providers
+  ..provide(Provider<SchoolsDetailsInfoProvide>.value(schoolsDetailsProvide));
+
+  runApp(ProviderNode(child: MyApp(), providers: providers,));
+}
 
 class MyApp extends StatelessWidget {
   @override

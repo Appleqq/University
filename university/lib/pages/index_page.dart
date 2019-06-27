@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../service/service_method.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'dart:convert';
+import '../pages/schools_details_page.dart';
 
 class IndexPage extends StatefulWidget {
   @override
@@ -84,7 +85,14 @@ class _IndexPageState extends State<IndexPage> {
       print('hotSchools====$hotSchoolsList');
       List <Widget> listWidget = hotSchoolsList.map((val){
         return InkWell(
-          onTap: (){},
+          onTap: (){
+             Navigator.push(
+              context,
+              new MaterialPageRoute(
+                builder: (context) => new SchoolsDetailPage(val['school_id:']),
+            ),
+        );
+          },
           child: Container(
             width: ScreenUtil().setWidth(750),
             color: Colors.white,
