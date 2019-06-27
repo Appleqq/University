@@ -12,7 +12,7 @@ class IndexPage extends StatefulWidget {
 
 class _IndexPageState extends State<IndexPage> {
 
-  int page = 1;
+  int page = 2;
   List <Map> hotSchoolsList=[];
   GlobalKey<RefreshFooterState> _footerKey = new GlobalKey<RefreshFooterState>();
 
@@ -54,7 +54,8 @@ class _IndexPageState extends State<IndexPage> {
                 print('formdata------$formData');
                 await request('schoolList', formData: formData).then((val){
                  
-                  var data = json.decode(snapshort.data.toString());
+                  var data = json.decode(val.toString());
+                   print('schoolDatasTemp====$data');
                   List<Map> schoolDatasTemp = (data['data']['item'] as List).cast();
                   setState(() {
                     hotSchoolsList.addAll(schoolDatasTemp);
@@ -76,10 +77,11 @@ class _IndexPageState extends State<IndexPage> {
 
   Widget _getSchoolList(List<Map> schoolsList){
     if(schoolsList.length != 0){
-      if (hotSchoolsList.length == 0)
+      if(hotSchoolsList.length == 0)
       {
         hotSchoolsList.addAll(schoolsList);
       }
+      print('hotSchools====$hotSchoolsList');
       List <Widget> listWidget = hotSchoolsList.map((val){
         return InkWell(
           onTap: (){},
