@@ -10,10 +10,11 @@ Future request(url, {formData}) async{
     Response response;
     Dio dio = Dio();
     dio.options.contentType = ContentType.parse("application/x-www-form-urlencoded");
+    dio.options.responseType = ResponseType.json;
     print('接口。。。。${serverPath[url]}');
     print('数据.....$formData');
     if(formData == null){
-      response = await dio.post(serverPath[url]);
+      response = await dio.get(serverPath[url]);
     }else
       response = await dio.post(serverPath[url], data: formData);
 
