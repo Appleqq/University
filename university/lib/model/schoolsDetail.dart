@@ -62,6 +62,7 @@ class Item {
   String batch;
   String proscore;
   String localBatchName;
+  String year;
 
   Item(
       {this.schoolId,
@@ -73,7 +74,8 @@ class Item {
       this.province,
       this.batch,
       this.proscore,
-      this.localBatchName});
+      this.localBatchName,
+      this.year});
 
   Item.fromJson(Map<String, dynamic> json) {
     schoolId = json['school_id'];
@@ -86,6 +88,7 @@ class Item {
     batch = json['batch'];
     proscore = json['proscore'];
     localBatchName = json['local_batch_name'];
+    year = json['year'];
   }
 
   Map<String, dynamic> toJson() {
@@ -100,6 +103,7 @@ class Item {
     data['batch'] = this.batch;
     data['proscore'] = this.proscore;
     data['local_batch_name'] = this.localBatchName;
+    data['year'] = this.year;
     return data;
   }
 }
